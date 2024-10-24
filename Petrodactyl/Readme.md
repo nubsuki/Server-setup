@@ -1,3 +1,5 @@
+https://wiki.s5gi.com/guides/linux/pterodactyl_and_wings_dockerized For more info
+
 mkdir -p /opt/pterodactyl/wings/config
 mkdir -p /opt/pterodactyl/panel/appvar/
 mkdir -p /opt/pterodactyl/panel/nginx/

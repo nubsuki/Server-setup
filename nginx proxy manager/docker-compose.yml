@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '40080:80'
+      - '40081:81'
+      - '40443:443'  
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt

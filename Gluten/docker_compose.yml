@@ -1,0 +1,142 @@
+version: "3"
+services:
+  gluetun:
+    image: qmcgaw/gluetun
+    container_name: gluetun
+    hostname: gluetun
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    ports:
+      - 6881:6881
+      - 6881:6881/udp
+      - 8085:8085 # qbittorrent
+      - 7575:7575 # Homarr
+      - 8989:8989 # Sonarr
+      - 9696:9696 # Prowlarr
+      - 7878:7878 # Radarr
+      - 9117:9117 # jackett
+      - 6767:6767 # bazzar
+      - 5055:5055 #jellyseer
+    volumes:
+      - /mediaserver/config/gluetun:/gluetun
+    
+    environment:
+      - VPN_SERVICE_PROVIDER=mullvad
+      - VPN_TYPE=openvpn
+      - OPENVPN_USER=
+      - SERVER_CITIES=Singapore
+      - TZ=UTC
+      - UPDATER_PERIOD=24h
+
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent
+    container_name: qbittorrent
+    network_mode: "service:gluetun"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+      - WEBUI_PORT=8085
+    volumes:
+      - /mediaserver/config/qbittorrent:/config
+      - /mediaserver/downloads:/downloads
+    depends_on:
+      - gluetun
+    restart: unless-stopped
+
+  homarr:
+    image: ghcr.io/ajnart/homarr:latest
+    container_name: homarr
+    network_mode: "service:gluetun"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # Optional, only if you want docker integration
+      - /mediaserver/homarr/configs:/app/data/configs 
+      - /mediaserver/homarr/icons:/app/public/icons    
+      - /mediaserver/homarr/data:/data
+    restart: unless-stopped
+
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    network_mode: "service:gluetun"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /mediaserver/config/sonarr/data:/config
+      - /mediaserver/tv:/tv #optional
+      - /mediaserver/movies:/movies
+      - /mediaserver/downloads:/downloads #optional
+    restart: unless-stopped
+
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    network_mode: "service:gluetun"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+    volumes:
+      - /mediaserver/config/prowlarr/data:/config
+    restart: unless-stopped
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    network_mode: "service:gluetun"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+    volumes:
+      - /mediaserver/config/radarr/config:/config
+      - /mediaserver/movies:/movies
+      - /mediaserver/tv:/tv
+      - /mediaserver/downloads:/downloads
+    restart: unless-stopped
+
+  jackett:
+    image: lscr.io/linuxserver/jackett:latest
+    container_name: jackett
+    network_mode: "service:gluetun"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - AUTO_UPDATE=true #optional
+      - RUN_OPTS= #optional
+    volumes:
+      - /mediaserver/config/jackett/data:/config
+      - /mediaserver/downloads:/downloads
+    restart: unless-stopped
+
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    network_mode: "service:gluetun"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /mediaserver/config/bazarr/config:/config
+      - /mediaserver/movies:/movies #optional
+      - /mediaserver/tv:/tv #optional
+    restart: unless-stopped
+
+  jellyseerr:
+    image: fallenbagel/jellyseerr:latest
+    container_name: jellyseerr
+    network_mode: "service:gluetun"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - LOG_LEVEL=info
+      - TZ=UTC 
+    volumes:
+      - /mediaserver/config/jellyseerr/config:/app/config  
+    restart: unless-stopped 

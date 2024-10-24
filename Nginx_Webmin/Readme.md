@@ -1,0 +1,1 @@
+Install this in install modules so you can easily setup your nginx

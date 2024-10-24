@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  petropal:
+    image: nubsuki/pteropal
+    container_name: petropal
+    volumes:
+      - /discordBot/pteropal/token.json:/app/token.json
+      - /discordBot/pteropal/credentials.json:/app/credentials.json  # Mount Google Drive credentials
+      - /var/lib/pterodactyl/volumes:/var/lib/pterodactyl/volumes   # Mount the save directory
+    environment:
+      - DISCORD_TOKEN=  # Discord bot token from 
+      - PTERODACTYL_API_URL=  # Pterodactyl API URL from 
+      - PTERODACTYL_API_KEY=  # Pterodactyl API key from 
+      - FOLDER_NAMES=Satisfactory,Minecraft  # Comma-separated folder names for backup
+      - FOLDER_PATHS=/var/lib/pterodactyl/volumes/62dcadf3-19e3-41d4-97fb-357fdef69679/.config/Epic/FactoryGame/Saved,/var/lib/pterodactyl/volumes/c597823a-d06a-4570-affa-0de7b3b49171/world
+      - TZ=Asia/Colombo
+      - SHUTDOWN_TIME=12:00 AM  # Time for shutdown
+      - BACKUP_TIME=12:20 AM   # Time for backup
+      - PUID=1000 # Permissions
+      - PGID=1000 # Permissions
+    restart: unless-stopped  

@@ -1,0 +1,33 @@
+version: "3"
+services:
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=1000 #change as you want
+      - PGID=1000 #change as you want
+      - TZ=Etc/UTC
+      - VERSION=docker
+      - PLEX_CLAIM= # after login in to plec vist  and re-deploy https://www.plex.tv/claim/
+    volumes:
+      - /mediaserver/plex/library:/config
+      - /mediaserver/movies:/movies
+      - /mediaserver/tv:/tv
+
+    restart: unless-stopped
+    
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /mediaserver/jellyfin/library:/config
+      - /mediaserver/tv:/tv
+      - /mediaserver/movies:/movies
+    ports:
+      - 8096:8096
+    restart: unless-stopped

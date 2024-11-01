@@ -15,6 +15,7 @@ This is my simple VPS setup guide for future reference.
 - **Jackett**
 - **Bazarr**
 - **Jellyseerr**
+- **Ellen** — A custom bot that plays music and videos and has AI chat
 
 ### Web Servers:
 - **Nginx Proxy Manager** — Used to obtain wildcard SSL for my domain.

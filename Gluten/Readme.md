@@ -8,5 +8,6 @@ Radarr
 jackett
 bazzar
 jellyseer
+Ellen
 
 all in one and running in the vpn

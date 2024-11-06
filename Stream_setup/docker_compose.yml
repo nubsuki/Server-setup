@@ -21,13 +21,15 @@ services:
     image: lscr.io/linuxserver/jellyfin:latest
     container_name: jellyfin
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=0
+      - PGID=0
       - TZ=Etc/UTC
     volumes:
       - /mediaserver/jellyfin/library:/config
       - /mediaserver/tv:/tv
       - /mediaserver/movies:/movies
+      - /mediaserver/anishows:/anishows
+      - /mediaserver/fonts:/usr/share/fonts
     ports:
       - 8096:8096
     restart: unless-stopped

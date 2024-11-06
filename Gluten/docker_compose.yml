@@ -9,8 +9,6 @@ services:
     devices:
       - /dev/net/tun:/dev/net/tun
     ports:
-      - 6881:6881
-      - 6881:6881/udp
       - 8085:8085 # qbittorrent
       - 7575:7575 # Homarr
       - 8989:8989 # Sonarr
@@ -21,7 +19,6 @@ services:
       - 5055:5055 #jellyseer
     volumes:
       - /mediaserver/config/gluetun:/gluetun
-    
     environment:
       - VPN_SERVICE_PROVIDER=mullvad
       - VPN_TYPE=openvpn
@@ -29,6 +26,7 @@ services:
       - SERVER_CITIES=Singapore
       - TZ=UTC
       - UPDATER_PERIOD=24h
+    restart: unless-stopped
 
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent

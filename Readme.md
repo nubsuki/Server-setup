@@ -31,7 +31,7 @@ This is my simple VPS setup guide for future reference.
 
 ### Streaming Setup:
 - **Plex**
-- **Jellyfin**
+- **Jellyfin** - and some english fonts so subs work properly
 
 ### SSL:
 - Standard SSL configuration for all services.

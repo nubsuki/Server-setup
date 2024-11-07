@@ -6,7 +6,7 @@
 This is my simple VPS setup guide for future reference.
 
 ### Services Running in Docker:
-- **Gluten** (with Mullvad OpenVPN) — All containers are in the same network.
+- **Gluten** (with Mullvad OpenVPN/Wireguard) — All containers are in the same network.
 - **qBittorrent**
 - **Homarr**
 - **Sonarr**
@@ -24,6 +24,7 @@ This is my simple VPS setup guide for future reference.
 ### Management Tools:
 - **Webmin** — For system management (not in Docker).
 - **Portainer** — For easy Docker deployment and configuration.
+- **FileBrowser** — For easily browse files.
 
 ### Game Server Management:
 - **Pterodactyl** with Wings — Running in Docker.

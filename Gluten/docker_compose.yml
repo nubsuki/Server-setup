@@ -21,8 +21,11 @@ services:
       - /mediaserver/config/gluetun:/gluetun
     environment:
       - VPN_SERVICE_PROVIDER=mullvad
-      - VPN_TYPE=openvpn
-      - OPENVPN_USER=
+      #- VPN_TYPE=openvpn
+      #- OPENVPN_USER=
+      - VPN_TYPE=wireguard
+      - WIREGUARD_PRIVATE_KEY=
+      - WIREGUARD_ADDRESSES=10.**.***.***/32
       - SERVER_CITIES=Singapore
       - TZ=UTC
       - UPDATER_PERIOD=24h

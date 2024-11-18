@@ -15,7 +15,10 @@ This is my simple VPS setup guide for future reference.
 - **Jackett**
 - **Bazarr**
 - **Jellyseerr**
-- **Ellen** — A custom bot that plays music and videos and has AI chat
+- **Ellen** — A custom bot that plays music and videos and has AI chat 
+
+
+### - **Ports** — To open port only to local host EX: 127.0.0.1:8085:8085
 
 ### Web Servers:
 - **Nginx Proxy Manager** — Used to obtain wildcard SSL for my domain.

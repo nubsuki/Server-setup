@@ -1,0 +1,16 @@
+version: "3"
+services:
+  ellen:
+    image: nubsuki/ellen
+    container_name: ellen
+    network_mode: "service:gluetun"
+    environment:
+     - TOKEN= # your discord bot token
+     - SPOTIFY_CLIENT_ID= # your spotify client id
+     - SPOTIFY_CLIENT_SECRET= # your spotify client secret
+     - PORT=8284 # Your port
+     - STATIC_IP= # your static ip
+     - GOOGLE_AI_API_KEY= # your_api_key_here
+     - VIDEO_DIRECTORY= # your location
+     - COMMAND_PREFIX= #your.command.prefix if you haven setup default will be used "."
+    restart: unless-stopped

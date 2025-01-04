@@ -1,7 +1,7 @@
 version: "3"
 services:
   gluetun:
-    image: qmcgaw/gluetun
+    image: qmcgaw/gluetun:latest
     container_name: gluetun
     hostname: gluetun
     cap_add:
@@ -9,6 +9,10 @@ services:
     devices:
       - /dev/net/tun:/dev/net/tun
     ports:
+
+      - 8888:8888/tcp
+      - 8388:8388/tcp # SHADOWSOCKS
+      - 8388:8388/udp # SHADOWSOCKS
       - 8085:8085 # qbittorrent
       - 7575:7575 # Homarr
       - 8989:8989 # Sonarr
@@ -16,23 +20,25 @@ services:
       - 7878:7878 # Radarr
       - 9117:9117 # jackett
       - 6767:6767 # bazzar
-      - 5055:5055 #jellyseer
+
     volumes:
       - /mediaserver/config/gluetun:/gluetun
     environment:
-      - VPN_SERVICE_PROVIDER=mullvad
-      #- VPN_TYPE=openvpn
-      #- OPENVPN_USER=
-      - VPN_TYPE=wireguard
+      - VPN_SERVICE_PROVIDER= #vpn provider
+      - VPN_TYPE=wireguard #vpn type (if you wanna use openvpn change this to openvpn and remvoe these 2 lines WIREGUARD_PRIVATE_KEY and WIREGUARD_ADDRESSES)
       - WIREGUARD_PRIVATE_KEY=
-      - WIREGUARD_ADDRESSES=10.**.***.***/32
-      - SERVER_CITIES=Singapore
-      - TZ=UTC
+      - WIREGUARD_ADDRESSES=10.65.81.48/32
+      - SHADOWSOCKS=on # if you wanna use shadowsocks (if you dont want to use it remove these 2 lines shadowsocks and shadowsocks_password)
+      - SHADOWSOCKS_PASSWORD= # your password for mullvad its empty string
+      - SERVER_COUNTRIES=Singapore # your server country
+      - TZ=Asia # your timezone
       - UPDATER_PERIOD=24h
+      - DNS=8.8.8.8,8.8.4.4 # your preferred dns 
+
     restart: unless-stopped
 
   qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent
+    image: lscr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent
     network_mode: "service:gluetun"
     environment:
@@ -141,18 +147,3 @@ services:
     volumes:
       - /mediaserver/config/jellyseerr/config:/app/config  
     restart: unless-stopped 
-  
-  ellen:
-    image: nubsuki/ellen
-    container_name: ellen
-    network_mode: "service:gluetun"
-    environment:
-     - TOKEN= # your discord bot token
-     - SPOTIFY_CLIENT_ID= # your spotify client id
-     - SPOTIFY_CLIENT_SECRET= # your spotify client secret
-     - PORT=8284 # Your port
-     - STATIC_IP= # your static ip
-     - GOOGLE_AI_API_KEY= # your_api_key_here
-     - VIDEO_DIRECTORY= # your location
-     - COMMAND_PREFIX= #your.command.prefix if you haven setup default will be used "."
-    restart: unless-stopped

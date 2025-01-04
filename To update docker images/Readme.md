@@ -1,4 +1,4 @@
-cd To the location where your docker-compose.yml file is located and 
+### cd To the location where your docker-compose.yml file is located and 
 
 docker-compose pull (to pull the latest)
 docker-compose down

@@ -13,7 +13,7 @@ services:
       - PTERODACTYL_API_URL=  # Pterodactyl API URL from 
       - PTERODACTYL_API_KEY=  # Pterodactyl API key from 
       - FOLDER_NAMES=Satisfactory,Minecraft  # Comma-separated folder names for backup
-      - FOLDER_PATHS=/var/lib/pterodactyl/volumes/62dcadf3-19e3-41d4-97fb-357fdef69679/.config/Epic/FactoryGame/Saved,/var/lib/pterodactyl/volumes/c597823a-d06a-4570-affa-0de7b3b49171/world
+      - FOLDER_PATHS=/var/lib/pterodactyl/volumes/<volume-id>/.config/Epic/FactoryGame/Saved,/var/lib/pterodactyl/volumes/<volume-id>/world
       - TZ=Asia/Colombo
       - SHUTDOWN_TIME=12:00 AM  # Time for shutdown
       - BACKUP_TIME=12:20 AM   # Time for backup

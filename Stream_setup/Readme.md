@@ -1,0 +1,1 @@
+## If you have issues subs not woring add these fonts do jellyfin just exract these and add the files you dont have to anything else "/mediaserver/fonts" change the location if you change the docker files.

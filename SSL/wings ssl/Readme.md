@@ -17,7 +17,7 @@ server {
     ssl_certificate_key /ssl/privkey1.pem;  # Path to your private key
 
     location / {
-        proxy_pass http://localhost:8443;  # Change to localhost
+        proxy_pass http://localhost:8443;  # Change to localhost (This have to change if your wings running in differant server)
 
         # Proxy settings
         proxy_set_header Host $host;

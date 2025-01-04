@@ -1,1 +1,1 @@
-Install this in install modules so you can easily setup your nginx
+### Install this in webmin panel > install modules so you can easily setup your nginx trough webmin

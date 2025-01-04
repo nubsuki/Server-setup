@@ -1,3 +1,5 @@
+### How to install nginx to the system
+
 sudo apt update
 sudo apt install nginx
 sudo systemctl start nginx

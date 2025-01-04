@@ -6,6 +6,8 @@
 This is my simple VPS setup guide for future reference.
 
 ### Services Running in Docker:
+
+## Stream setup
 - **Gluten** (with Mullvad OpenVPN/Wireguard) — All containers are in the same network.
 - **qBittorrent**
 - **Homarr**
@@ -15,10 +17,9 @@ This is my simple VPS setup guide for future reference.
 - **Jackett**
 - **Bazarr**
 - **Jellyseerr**
+
+## Discord music bot
 - **Ellen** — A custom bot that plays music and videos and has AI chat 
-
-
-### - **Ports** — To open port only to local host EX: 127.0.0.1:8085:8085
 
 ### Web Servers:
 - **Nginx Proxy Manager** — Used to obtain wildcard SSL for my domain.
@@ -40,5 +41,7 @@ This is my simple VPS setup guide for future reference.
 ### SSL:
 - Standard SSL configuration for all services.
 - Specific WebSocket SSL configuration for Wings.
+
+### - **Ports** — To open port only to local host EX: 127.0.0.1:8085:8085
 
 ---

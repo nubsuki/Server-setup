@@ -1,3 +1,5 @@
+## This docker compose from 5gi (https://www.youtube.com/@s5gi)
+
 https://wiki.s5gi.com/guides/linux/pterodactyl_and_wings_dockerized For more info
 
 mkdir -p /opt/pterodactyl/wings/config
@@ -16,6 +18,8 @@ nano docker-compose.yml       (paste the compse file and run)
 
 docker-compose up
 
+### Or you can use portainer and run in it.
+
 After encountering these errors, press Ctrl+C to stop
 
 wings_1     |
@@ -32,6 +36,7 @@ wings_1     | for this issue, it will be closed.
 wings_1     |
 wings_1     | pterodactyl_wings_1 exited with code 1
 
+### Make sure to start other container but not wings 
 
 docker exec -it pterodactyl_panel_1 php artisan p:user:make     (To make user for pterodactyl panel)
 
@@ -40,9 +45,9 @@ cd /opt/pterodactyl/wings/config
 touch config.yml
 nano config.yml        (Add node config file)
 
-start wings
+### start wings in portainer you should be good to go !
 
-Check logs in Portainer. If you get a daemon error in wings, add this in.
+## Check logs in Portainer. If you get a daemon error in wings, add this in.
 
 cd /opt/pterodactyl/wings/config
 nano config.yml 

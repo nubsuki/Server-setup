@@ -1,14 +1,21 @@
 # This tools can be usefull
 
+
+apt update  && apt upgrade -y
+
+
+# install docker
+
+curl https://get.docker.com | bash
+
 ## Portainer
 
-docker run -d -p 8000:8000 -p 9443:9443 \
-  --name portainer --restart=always \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  -v portainer_data:/data \
-  portainer/portainer-ce:latest
+docker run -d -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
 
-portainer port : 10000
+portainer port : 9443
+
+500+ Templates
+https://raw.githubusercontent.com/Lissy93/portainer-templates/main/templates.json
 
 
 ## Webmin

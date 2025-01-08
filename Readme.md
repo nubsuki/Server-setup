@@ -1,47 +1,76 @@
 
 ---
 
-## VPS Setup
+## How to Set Up a Linux Server Guide
 
-This is my simple VPS setup guide for future reference.
+This is my simple Server setup guide for future reference.
 
-### Services Running in Docker:
+---
 
-## Stream setup
-- **Gluten** (with Mullvad OpenVPN/Wireguard) — All containers are in the same network.
-- **qBittorrent**
-- **Homarr**
-- **Sonarr**
-- **Prowlarr**
-- **Radarr**
-- **Jackett**
-- **Bazarr**
-- **Jellyseerr**
+### **Services Running in Docker:**
 
-## Discord music bot
-- **Ellen** — A custom bot that plays music and videos and has AI chat 
+#### **Stream Setup:**
+- **Gluten**  
+  (with Mullvad OpenVPN/Wireguard) — All containers are in the same network.  
+- **qBittorrent**  
+- **Homarr**  
+- **Sonarr**  
+- **Prowlarr**  
+- **Radarr**  
+- **Jackett**  
+- **Bazarr**  
+- **Jellyseerr**  
 
-### Web Servers:
-- **Nginx Proxy Manager** — Used to obtain wildcard SSL for my domain.
-- **Nginx** — Installed and fix some Webmin errors I ran into.
+#### **Discord Music Bot:**
+- **Ellen**  
+  A custom bot that plays music, videos, and supports AI chat.
 
-### Management Tools:
-- **Webmin** — For system management (not in Docker).
-- **Portainer** — For easy Docker deployment and configuration.
-- **FileBrowser** — For easily browse files.
+---
 
-### Game Server Management:
-- **Pterodactyl** with Wings — Running in Docker.
-- **Petropal** — A custom bot to manage servers, shutting them down to free resources and backing up saves to Google Drive.
+### **Web Servers:**
+- **Nginx Proxy Manager**  
+  Used to obtain wildcard SSL for my domain.  
+- **Nginx**  
+  Installed to resolve Webmin-related errors.
 
-### Streaming Setup:
-- **Plex**
-- **Jellyfin** - and some english fonts so subs work properly
+---
 
-### SSL:
-- Standard SSL configuration for all services.
-- Specific WebSocket SSL configuration for Wings.
+### **Management Tools:**
+- **Webmin**  
+  For system management (not in Docker).  
+- **Portainer**  
+  For easy Docker deployment and configuration.  
+- **FileBrowser**  
+  Allows easy file browsing.  
 
-### - **Ports** — To open port only to local host EX: 127.0.0.1:8085:8085
+---
+
+### **Game Server Management:**
+- **Pterodactyl with Wings**  
+  Running in Docker for managing game servers.  
+- **Petropal**  
+  A custom bot that manages servers by shutting them down to free resources and backing up saves to Google Drive.
+
+---
+
+### **Streaming Setup:**
+- **Plex**  
+- **Jellyfin**  
+  (Includes English fonts for proper subtitle rendering).
+
+---
+
+### **SSL Configuration:**
+- Standard SSL configuration applied to all services.  
+- Special WebSocket SSL configuration for Wings.
+
+---
+
+### **Ports:**
+- Configure Docker to open ports only to `localhost` if you don’t want the port to be exposed to the outside world, restricting access to local usage only.  
+  **Example:**  
+  ```bash
+  127.0.0.1:8085:8085
+  ```
 
 ---

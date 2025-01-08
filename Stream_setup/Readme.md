@@ -1,1 +1,16 @@
-## If you have issues subs not woring add these fonts do jellyfin just exract these and add the files you dont have to anything else "/mediaserver/fonts" change the location if you change the docker files.
+```markdown
+## Fixing Subtitle Issues in Jellyfin
+
+If you experience issues with subtitles not working, add these fonts to Jellyfin. 
+
+### Steps:
+1. Download and extract the fonts.  
+2. Add the extracted font files to the directory:  
+   ```bash
+   /mediaserver/fonts
+   ```  
+   (Change the location if you have modified your Docker setup.)
+
+3. No further configuration is required. Jellyfin will automatically recognize the fonts.
+
+```

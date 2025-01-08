@@ -1,38 +1,77 @@
-Update your server: 
+```markdown
+# Setting Up a Samba Share on Your Server
+
+### Update Your Server
+```bash
 sudo apt update
 sudo apt upgrade
+```
 
-Create your share director and set permissions 
+---
+
+### Create Your Share Directory and Set Permissions
+```bash
 sudo mkdir /share
 sudo chmod 777 /share
+```
 
-Install Samba
+---
+
+### Install Samba
+```bash
 sudo apt install samba
+```
 
-Edit the samba confi
+---
+
+### Edit the Samba Configuration
+```bash
 sudo nano /etc/samba/smb.conf
+```
 
-# Go to very bottom 
+#### Add the Following to the Bottom of the File:
+```conf
 [share]
 path = /share
 browseable = yes
 read only = no
 guest ok = no
-# if you wanna give root permmition
+# If you want to give root permissions:
 force user = root
 force group = root
+```
 
-Add your samba user
+---
+
+### Add Your Samba User
+```bash
 sudo smbpasswd -a [username]
-add the password
+```
+- Replace `[username]` with your desired username.  
+- Set and confirm the password when prompted.
 
-\\[ip]\share 
-# in wondows machine
+---
 
+### Access the Share from a Windows Machine
+In File Explorer, navigate to:  
+```plaintext
+\\[ip]\share
+```
+- Replace `[ip]` with the server's IP address.
 
-Set services to auto start on startup
+---
+
+### Set Samba Services to Auto-Start on Boot
+```bash
 sudo systemctl enable smbd
 sudo systemctl enable nmbd
-Restart samba services
+```
+
+---
+
+### Restart Samba Services
+```bash
 sudo systemctl restart smbd
 sudo systemctl restart nmbd
+```
+```

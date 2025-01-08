@@ -1,11 +1,41 @@
-### How to install nginx to the system
+```markdown
+### How to Install Nginx on Your System
 
-sudo apt update
-sudo apt install nginx
-sudo systemctl start nginx
+1. **Update Package Lists**  
+   ```bash
+   sudo apt update
+   ```
 
-Webmin error fix for some error forgot  :|
+2. **Install Nginx**  
+   ```bash
+   sudo apt install nginx
+   ```
 
-sudo apt update
-sudo apt install libhtml-parser-perl
-sudo systemctl restart webmin
+3. **Start Nginx**  
+   ```bash
+   sudo systemctl start nginx
+   ```
+
+---
+
+### Webmin Error Fix (Forgot to Install Dependency)
+
+If you encounter errors in Webmin, install the missing dependency:
+
+1. **Update Package Lists Again**  
+   ```bash
+   sudo apt update
+   ```
+
+2. **Install the Required Perl Module**  
+   ```bash
+   sudo apt install libhtml-parser-perl
+   ```
+
+3. **Restart Webmin**  
+   ```bash
+   sudo systemctl restart webmin
+   ```
+
+This should fix the issue and allow Webmin to function correctly.
+```

@@ -1,25 +1,33 @@
-# This tools can be usefull
+```markdown
+# Useful Tools
 
+## Update and Upgrade System
+```bash
+apt update && apt upgrade -y
+```
 
-apt update  && apt upgrade -y
+---
 
-
-# install docker
-
+## Install Docker
+```bash
 curl https://get.docker.com | bash
+```
+
+---
 
 ## Portainer
-
+```bash
 docker run -d -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+```
+- **Portainer Port:** `9443`
 
-portainer port : 9443
+### 500+ Templates
+- Template URL: [https://raw.githubusercontent.com/Lissy93/portainer-templates/main/templates.json](https://raw.githubusercontent.com/Lissy93/portainer-templates/main/templates.json)
 
-500+ Templates
-https://raw.githubusercontent.com/Lissy93/portainer-templates/main/templates.json
-
+---
 
 ## Webmin
-
+```bash
 sudo apt install -y software-properties-common apt-transport-https wget
 
 wget -qO - http://www.webmin.com/jcameron-key.asc | sudo apt-key add -
@@ -29,5 +37,6 @@ echo "deb http://download.webmin.com/download/repository sarge contrib" | sudo t
 apt update
 
 sudo apt install webmin -y
-
-webmin port : 10000
+```
+- **Webmin Port:** `10000`
+```

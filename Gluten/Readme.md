@@ -1,18 +1,21 @@
-### vist below site for more info 
+```markdown
+### For More Information
 
-https://github.com/qdm12/gluetun-wiki/tree/main/setup/providers
+Visit the following site for additional setup details:  
+[https://github.com/qdm12/gluetun-wiki/tree/main/setup/providers](https://github.com/qdm12/gluetun-wiki/tree/main/setup/providers)
 
+---
 
-### this setup include,
+### This Setup Includes:
 
-qbittorrent
-Homarr
-Sonarr
-Prowlarr
-Radarr
-jackett
-bazzar
-jellyseer
-Ellen
+- **qBittorrent**  
+- **Homarr**  
+- **Sonarr**  
+- **Prowlarr**  
+- **Radarr**  
+- **Jackett**  
+- **Bazarr**  
+- **Jellyseerr**  
 
-all in one and running in the vpn
+All of these services are running together, configured within a VPN setup.
+```

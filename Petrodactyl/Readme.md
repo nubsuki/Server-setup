@@ -1,64 +1,96 @@
-## This docker compose from 5gi (https://www.youtube.com/@s5gi)
+```markdown
+## Pterodactyl and Wings Docker Setup Guide
 
-https://wiki.s5gi.com/guides/linux/pterodactyl_and_wings_dockerized For more info
+This setup guide follows instructions from 5gi. For more details, refer to the [wiki](https://wiki.s5gi.com/guides/linux/pterodactyl_and_wings_dockerized).
 
+### Create Necessary Directories
+```bash
 mkdir -p /opt/pterodactyl/wings/config
 mkdir -p /opt/pterodactyl/panel/appvar/
 mkdir -p /opt/pterodactyl/panel/nginx/
 mkdir -p /opt/pterodactyl/panel/logs/
+```
 
+---
 
+### Install Docker Compose
+```bash
 apt install docker-compose -y
+```
+
+---
+
+### Setup Pterodactyl
+```bash
 cd /opt/pterodactyl/
 touch docker-compose.yml
+```
 
+Edit `docker-compose.yml`:
+```bash
+nano docker-compose.yml
+```
+(Paste the Docker Compose file and save)
 
-nano docker-compose.yml       (paste the compse file and run)
+---
 
-
+### Start Docker Compose
+```bash
 docker-compose up
+```
 
-### Or you can use portainer and run in it.
+Alternatively, you can use Portainer to run the containers.
 
-After encountering these errors, press Ctrl+C to stop
+---
 
-wings_1     |
-wings_1     | Error: Configuration File Not Found
-wings_1     |
-wings_1     | Wings was not able to locate your configuration file, and therefore is not
-wings_1     | able to complete its boot process. Please ensure you have copied your instance
-wings_1     | configuration file into the default location below.
-wings_1     |
-wings_1     | Default Location: /etc/pterodactyl/config.yml
-wings_1     |
-wings_1     | This is not a bug with this software. Please do not make a bug report
-wings_1     | for this issue, it will be closed.
-wings_1     |
-wings_1     | pterodactyl_wings_1 exited with code 1
+### Troubleshooting - Error: "Configuration File Not Found"
+If you encounter this error:
+```plaintext
+Error: Configuration File Not Found
+Wings was not able to locate your configuration file...
+```
 
-### Make sure to start other container but not wings 
+- This means the configuration file is missing. To resolve this:
+  1. **Stop the Wings container** (use Ctrl+C).
+  2. Create the necessary configuration file:
+    ```bash
+    cd /opt/pterodactyl/wings/config
+    touch config.yml
+    nano config.yml
+    ```
+  3. Add your node configuration to the `config.yml` file.
 
-docker exec -it pterodactyl_panel_1 php artisan p:user:make     (To make user for pterodactyl panel)
+---
 
+### Creating a User for the Pterodactyl Panel
+Before starting Wings, make sure to create a user for Pterodactyl panel:
+```bash
+docker exec -it pterodactyl_panel_1 php artisan p:user:make
+```
 
+---
+
+### Check Logs in Portainer
+If you encounter a "daemon error" in Wings, add this configuration to `config.yml`:
+
+```bash
 cd /opt/pterodactyl/wings/config
-touch config.yml
-nano config.yml        (Add node config file)
+nano config.yml
+```
 
-### start wings in portainer you should be good to go !
-
-## Check logs in Portainer. If you get a daemon error in wings, add this in.
-
-cd /opt/pterodactyl/wings/config
-nano config.yml 
-
+Add the following:
+```yaml
 docker:
   network:
     interfaces:
       v4:
         subnet: 192.54.0.0/16
         gateway: 192.54.0.1
+```
 
+---
 
+### Start Wings
+After making these adjustments, start the Wings container in Portainer. Configure Nginx as needed.
 
-Then start Wings and configure Nginx.
+```

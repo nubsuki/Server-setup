@@ -1,69 +1,25 @@
+# How to Set Up a Linux Server Guide
+
+This is a simple server setup guide for future reference. It covers various steps and software configurations to get your Linux server up and running. The steps are designed for Debian-based systems (Ubuntu, Debian).
+
+## First Step: Initial Setup
+
+Before diving into more advanced server configurations, follow these initial steps to secure and prepare your system:
+
+1. **Update Your System**: 
+   Ensure your system is up-to-date to get the latest security patches and updates.
+
+2. **Change the Default SSH Port**: 
+   For better security, change the default SSH port from 22 to a custom number.
+
+3. **Configure the Firewall (UFW)**: 
+   Set up a firewall to control incoming and outgoing traffic and allow only necessary services.
+
+4. **Set Up Two-Factor Authentication (2FA)**: 
+   Secure your server with 2FA to add an extra layer of protection.
 
 ---
 
-## How to Set Up a Linux Server Guide
+## More Coming Soon
 
-This is my simple Server setup guide for future reference.
-
-More guids for linux. 
-
----
-
-### **Services Running in Docker:**
-
-#### **Stream Setup:**
-- **Gluten**  
-  (with Mullvad OpenVPN/Wireguard) — All containers are in the same network.  
-- **qBittorrent**  
-- **Homarr**  
-- **Sonarr**  
-- **Prowlarr**  
-- **Radarr**  
-- **Jackett**  
-- **Bazarr**  
-- **Jellyseerr**  
-
-#### **Discord Music Bot:**
-- **Ellen**  
-  A custom bot that plays music, videos, and supports AI chat.
-
----
-
-### **Web Servers:**
-- **Nginx Proxy Manager**  
-  Used to obtain wildcard SSL for my domain.  
-- **Nginx**  
-  Installed to resolve Webmin-related errors.
-
----
-
-### **Management Tools:**
-- **Webmin**  
-  For system management (not in Docker).  
-- **Portainer**  
-  For easy Docker deployment and configuration.  
-- **FileBrowser**  
-  Allows easy file browsing.  
-
----
-
-### **Game Server Management:**
-- **Pterodactyl with Wings**  
-  Running in Docker for managing game servers.  
-- **Petropal**  
-  A custom bot that manages servers by shutting them down to free resources and backing up saves to Google Drive.
-
----
-
-### **Streaming Setup:**
-- **Plex**  
-- **Jellyfin**  
-  (Includes English fonts for proper subtitle rendering).
-
----
-
-### **SSL Configuration:**
-- Standard SSL configuration applied to all services.  
-- Special WebSocket SSL configuration for Wings.
-
----
+This guide will continue to evolve as I add more setup instructions. Stay tuned for future updates as I explore more tools and configurations!

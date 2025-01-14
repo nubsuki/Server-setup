@@ -19,4 +19,8 @@ This module allows you to:
 - Restart/reload Nginx.
 - Set up virtual hosts, SSL, and other configurations.
 
+4. **Download the latest Nginx Webmin module from the official site:**
+   - [Nginx Webmin Module by Justin Hoffman](https://www.justindhoffman.com/project/nginx-webmin-module)
+
+
 ```

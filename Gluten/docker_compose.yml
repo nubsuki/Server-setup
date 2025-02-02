@@ -147,3 +147,33 @@ services:
     volumes:
       - /mediaserver/config/jellyseerr/config:/app/config  
     restart: unless-stopped 
+
+  tachidesk:
+    image: ghcr.io/suwayomi/tachidesk:stable
+    container_name: tachidesk
+    network_mode: "service:gluetun"
+    environment:
+      - TZ=UTC
+      - PUID=1000
+      - PGID=1000
+      - FLARESOLVERR_ENABLED=true
+      - FLARESOLVERR_URL=http://localhost:8191
+      - BIND_IP=0.0.0.0
+      - BIND_PORT=4567
+      - DOWNLOAD_AS_CBZ=true
+      - BASIC_AUTH_ENABLED=true
+      - BASIC_AUTH_USERNAME=
+      - BASIC_AUTH_PASSWORD=
+
+    volumes:
+      - /tachidesk/downloads:/home/suwayomi/.local/share/Tachidesk/downloads/
+      - /tachidesk/data:/home/suwayomi/.local/share/Tachidesk
+    restart: on-failure:3
+
+  flaresolverr:
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    container_name: flaresolverr
+    network_mode: "service:gluetun"
+    environment:
+      - LOG_LEVEL=info
+    restart: unless-stopped

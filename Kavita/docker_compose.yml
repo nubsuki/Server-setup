@@ -1,0 +1,15 @@
+---
+services:
+  kavita:
+    image: lscr.io/linuxserver/kavita:latest
+    container_name: kavita
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Etc/UTC
+    volumes:
+      - /mediaserver/config/kavita/config:/config
+      - /homeserver/comics:/homeserver/comics
+    ports:
+      - 5000:5000
+    restart: unless-stopped

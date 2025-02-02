@@ -12,10 +12,16 @@ Visit the following site for additional setup details:
 - **Homarr**  
 - **Sonarr**  
 - **Prowlarr**  
-- **Radarr**  
-- **Jackett**  
-- **Bazarr**  
+- **Radarr** 
 - **Jellyseerr**  
+- **tachidesk**  
+- **Bazarr**  
+- **Jellyseerr** 
+- **flaresolverr** 
+
+### Change permission for tachidesk:
+sudo chown -R 1000:1000 /tachidesk/downloads
+sudo chmod -R 755 /tachidesk/downloads
 
 All of these services are running together, configured within a VPN setup.
 ```

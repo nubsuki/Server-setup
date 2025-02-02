@@ -1,0 +1,37 @@
+---
+services:
+  syncthing-1:
+    image: lscr.io/linuxserver/syncthing:latest
+    container_name: syncthing-1
+    hostname: syncthing-1 #optional
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=UTC
+    volumes:
+      - /mediaserver/config/syncthing-1/config:/config
+      - /mediaserver/tachidesk/downloads/mangas:/mangas
+    ports:
+      - 8384:8384
+      - 22000:22000/tcp
+      - 22000:22000/udp
+      - 21027:21027/udp
+    restart: unless-stopped
+  
+  syncthing-2:
+    image: lscr.io/linuxserver/syncthing:latest
+    container_name: syncthing-2
+    hostname: syncthing-2 #optional
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=UTC
+    volumes:
+      - /mediaserver/config/syncthing-2/config:/config
+      - /mnt/homeserver/tachidesk/manga:/tachidesk/manga
+    ports:
+      - 8385:8384
+      - 22001:22000/tcp
+      - 22001:22000/udp
+      - 21028:21027/udp
+    restart: unless-stopped

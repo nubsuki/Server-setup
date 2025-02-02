@@ -166,8 +166,8 @@ services:
       - BASIC_AUTH_PASSWORD=
 
     volumes:
-      - /tachidesk/downloads:/home/suwayomi/.local/share/Tachidesk/downloads/
-      - /tachidesk/data:/home/suwayomi/.local/share/Tachidesk
+      - /mediaserver/tachidesk/downloads:/home/suwayomi/.local/share/Tachidesk/downloads/
+      - /mediaserver/tachidesk/data:/home/suwayomi/.local/share/Tachidesk
     restart: on-failure:3
 
   flaresolverr:

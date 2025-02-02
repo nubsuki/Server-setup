@@ -20,8 +20,11 @@ Visit the following site for additional setup details:
 - **flaresolverr** 
 
 ### Change permission for tachidesk:
-sudo chown -R 1000:1000 /tachidesk/downloads
-sudo chmod -R 755 /tachidesk/downloads
+sudo ls -lah /mediaserver/tachidesk
+
+sudo chown -R 1000:1000 /mediaserver/tachidesk
+
+sudo chmod -R 755 /mediaserver/tachidesk
 
 All of these services are running together, configured within a VPN setup.
 ```
